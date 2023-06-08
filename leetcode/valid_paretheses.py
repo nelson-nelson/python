@@ -28,8 +28,11 @@ def validate_paretheses2(s: str) -> bool:
         '[': '-',
         '{': '-',
     }
-    s1 = [s[0]]
-    for c in s[1:]:
+    s1 = []
+    for c in s:
+        if len(s1) == 0:
+            s1.append(c)
+            continue
         if s1[-1] == mapping[c]:
             s1.pop()
         else:
@@ -39,5 +42,8 @@ def validate_paretheses2(s: str) -> bool:
 
 if __name__ == '__main__':
     s = "[()([]{})]"
+    print(validate_paretheses1(s))
+    print(validate_paretheses2(s))
+    s = "()[]{}"
     print(validate_paretheses1(s))
     print(validate_paretheses2(s))
